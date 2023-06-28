@@ -1,6 +1,6 @@
-import { uploadPhoto, createUser } from './utils.js';
+import { uploadPhoto, createUser } from './utils';
 
-async function asyncUploadUser() {
+export default async function asyncUploadUser() {
   try {
     const photoPromise = uploadPhoto('example.jpg');
     const userPromise = createUser();
@@ -25,7 +25,3 @@ async function asyncUploadUser() {
     };
   }
 }
-
-asyncUploadUser()
-  .then(result => console.log(result))
-  .catch(error => console.log('An error occurred:', error));
