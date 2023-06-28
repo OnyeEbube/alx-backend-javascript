@@ -2,11 +2,20 @@ import { uploadPhoto, createUser } from './utils.js';
 
 async function asyncUploadUser() {
   try {
-    const [photo, user] = await Promise.all([uploadPhoto('example.jpg'), createUser()]);
-    
+    const photoPromise = uploadPhoto('example.jpg');
+    const userPromise = createUser();
+
+    const [photo, user] = await Promise.all([photoPromise, userPromise]);
+
     return {
-      photo: photo,
-      user: user,
+      photo: {
+        status: photo.status,
+        body: photo.body,
+      },
+      user: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
     };
   } catch (error) {
     console.log('An error occurred:', error);
@@ -16,3 +25,7 @@ async function asyncUploadUser() {
     };
   }
 }
+
+asyncUploadUser()
+  .then(result => console.log(result))
+  .catch(error => console.log('An error occurred:', error));
