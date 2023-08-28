@@ -18,7 +18,7 @@ describe('calculateNumber', () => {
   // Test case for division
   it('should divide two rounded numbers correctly', () => {
     const result = calculateNumber('DIVIDE', 8.5, 2);
-    assert.strictEqual(result, 4); // The expected result after rounding
+    assert.strictEqual(result, 4.5); // The expected result after rounding
   });
 
   // Test case for division by zero
